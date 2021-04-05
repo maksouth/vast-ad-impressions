@@ -1,8 +1,8 @@
-package com.harbovskyi.vast.ad;
+package com.harbovskyi.vast.feature.ad;
 
-import com.harbovskyi.vast.EventType;
-import com.harbovskyi.vast.PropertyType;
-import com.harbovskyi.vast.StatisticPropertyCounter;
+import com.harbovskyi.vast.model.EventType;
+import com.harbovskyi.vast.model.FilterType;
+import com.harbovskyi.vast.feature.StatisticPropertyCounter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.MediaType;
@@ -24,8 +24,8 @@ public class AdController {
     @GetMapping(produces = MediaType.APPLICATION_XML_VALUE)
     public ResponseEntity<String> getAd(String sdkVersion, String sessionId, String platform,
                                 String userName, String countryCode) {
-        statisticPropertyCounter.increment(EventType.AD, PropertyType.SDK, sdkVersion);
-        statisticPropertyCounter.increment(EventType.AD, PropertyType.USER, userName);
+        statisticPropertyCounter.increment(EventType.AD, FilterType.SDK, sdkVersion);
+        statisticPropertyCounter.increment(EventType.AD, FilterType.USER, userName);
         return restTemplate.getForEntity(vastAdEndpoint, String.class);
     }
 }

@@ -1,4 +1,4 @@
-package com.harbovskyi.vast;
+package com.harbovskyi.vast.configuration;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
