@@ -1,0 +1,15 @@
+version: '2'
+services:
+  app:
+    build: .
+    ports:
+      - "8080:8080"
+    links:
+      - "db:redis"
+    environment:
+      REDIS_HOST: redis
+  db:
+    image: "redis:alpine"
+    hostname: redis
+    ports:
+      - "6379:6379"
